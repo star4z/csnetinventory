@@ -7,6 +7,7 @@ Requirements
 - Django 2.2+ [1]_
 - database software (We use mariadb/mysql, but Django is configurable with pretty much any database software.)
 - mysqlclient [1]_
+- djangorestframework
 - virtualenv
 - targets linux clients
 
@@ -43,7 +44,10 @@ To open mysql as admin:
 
     sudo mysql -uroot
 
-Then in mysql::
+Then in mysql
+
+::
+
     CREATE DATABASE inventorydb;
     CREATE USER 'yourusername'@'localhost' IDENTIFIED BY 'yourpassword';
     GRANT ALL PRIVILEGES ON inventorydb.* TO 'yourusername'@'localhost';

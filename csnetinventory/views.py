@@ -1,12 +1,8 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.views import generic
-from django.core import serializers
-
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 
 from .models import InventoryItem
 from .serializers import InventoryItemSerializer
+
 
 class InventoryItemViewSet(viewsets.ModelViewSet):
     """
@@ -14,3 +10,4 @@ class InventoryItemViewSet(viewsets.ModelViewSet):
     """
     queryset = InventoryItem.objects.all()
     serializer_class = InventoryItemSerializer
+    permission_classes = [permissions.IsAuthenticated]

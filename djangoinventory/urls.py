@@ -1,5 +1,6 @@
 """djangoinventory URL Configuration
 
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
 Examples:
@@ -15,14 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-from csnetinventory import views
-
-router = routers.DefaultRouter()
-router.register(r'inventory', views.InventoryItemViewSet)
+import csnetinventory.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('inventory/', include(csnetinventory.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

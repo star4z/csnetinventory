@@ -11,4 +11,3 @@ class InventoryItem(models.Model):
     room = models.CharField(max_length=200, default='')
     brand = models.CharField(max_length=200, default='')
     acquired = models.DateField('date acquired', default=timezone.now)
-

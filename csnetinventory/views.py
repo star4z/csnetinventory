@@ -13,4 +13,4 @@ class InventoryItemViewSet(viewsets.ModelViewSet):
     serializer_class = InventoryItemSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id', 'name', 'barcode', 'qr', 'm_type', 'serial', 'room', 'brand', 'acquired']
+    filter_fields = ['id', 'name', 'barcode', 'qr', 'category', 'serial', 'room', 'brand', 'acquired']

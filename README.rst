@@ -1,6 +1,9 @@
 =========
 Inventory
 =========
+
+.. contents::
+
 Requirements
 ------------
 - Python 3.7+

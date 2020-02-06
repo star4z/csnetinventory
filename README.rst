@@ -10,7 +10,8 @@ Requirements
 - Django 2.2+ [1]_
 - database software (We use mariadb/mysql, but Django is configurable with pretty much any database software.)
 - mysqlclient [1]_
-- djangorestframework
+- djangorestframework [1]_
+- django-url-filter [1]_
 - virtualenv
 - targets linux clients
 

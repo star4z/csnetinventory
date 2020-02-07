@@ -5,7 +5,7 @@ Inventory
 .. contents::
 
 Requirements
-------------
+============
 (This guide is for installing on a Linux/Ubuntu distro.)
 
 - Python 3.7+

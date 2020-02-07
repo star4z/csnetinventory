@@ -5,7 +5,7 @@ Inventory
 .. contents::
 
 Requirements
-============
+------------
 (This guide is for installing on a Linux/Ubuntu distro.)
 
 - Python 3.7+
@@ -21,12 +21,11 @@ You may also need python3-venv, depending on your Python installation.
 
 See also requirements.txt
 
+
 Setup
------
-
+=====
 venv
-====
-
+----
 To set up the virtual environment and then activate it, run the following
 commands:
 
@@ -44,7 +43,7 @@ To quit venv at any time you just need to use the following command:
     deactivate
 
 mysql
-=====
+-----
 
 In mysql, create a new user and a new database, and give that user permissions
 to use that database.
@@ -66,7 +65,7 @@ Then in mysql
 That should be adequate for setting up the database.
 
 ldap
-====
+----
 A la this_ stackoverflow page, you probably need to copy the cert file to
 ``/etc/ssl/certs/`` and add TLS_CACERT /etc/ssl/certs/[cert name] to
 ``/etc/ldap/ldap.conf``.The cert can be obtained here_.
@@ -75,7 +74,7 @@ A la this_ stackoverflow page, you probably need to copy the cert file to
 .. _here: https://accounts.cs.sunyit.edu/ucs-root-ca.crt
 
 Configuring Django
-==================
+------------------
 Then you need to make the following changes in `settings.py`:
 
 - Change DATABASES to match the following pattern: (Obviously, these can be
@@ -118,16 +117,16 @@ admin account.
 
     python manage.py createsuperuser
 
+
 Running the server
-==================
+------------------
 
 ::
 
     python manage.py runserver
 
-
 Other helpful Django commands
-=============================
+-----------------------------
 Access the project python shell:
 
 ::

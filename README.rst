@@ -6,16 +6,20 @@ Inventory
 
 Requirements
 ------------
-- Python 3.7+
-- Django 2.2+ [1]_
-- database software (We use mariadb/mysql, but Django is configurable with pretty much any database software.)
-- mysqlclient [1]_
-- djangorestframework [1]_
-- django-url-filter [1]_
-- virtualenv
-- targets linux clients
+(This guide is for installing on a Linux/Ubuntu distro.)
 
-.. [1] install inside venv environment
+- Python 3.7+
+- mariadb
+- libmariadbclient-dev
+- python3-dev
+- libpython3-dev
+- libsasl2-dev
+- libldap2-dev
+- libssl-dev
+
+You may also need python3-venv, depending on your Python installation.
+
+See also requirements.txt
 
 Setup
 =====
@@ -23,15 +27,16 @@ Setup
 venv
 ----
 
-To set up the virtual environment and then activate it, run the following commands:
+To set up the virtual environment and then activate it, run the following
+commands:
 
 ::
-
-    virtualenv venv
+    python3.x -m venv venv
     . venv/bin/activate
 
 Your Python dependencies should be installed while venv is active.
-You'll know venv is active because you'll see `(venv)` before your command prompt.
+You'll know venv is active because you'll see `(venv)` before your command
+prompt.
 To quit venv at any time you just need to use the following command:
 
 ::
@@ -41,7 +46,8 @@ To quit venv at any time you just need to use the following command:
 mysql
 -----
 
-In mysql, create a new user and a new database, and give that user permissions to use that database.
+In mysql, create a new user and a new database, and give that user permissions
+to use that database.
 To open mysql as admin:
 
 ::
@@ -61,16 +67,19 @@ That should be adequate for setting up the database.
 
 ldap
 ----
-a la this_ stackoverflow page, you probably need to copy the cert file to /etc/ssl/certs/ and add TLS_CACERT /etc/ssl/certs/[cert name] to /etc/ldap/ldap.conf
+A la this_ stackoverflow page, you probably need to copy the cert file to
+``/etc/ssl/certs/`` and add TLS_CACERT /etc/ssl/certs/[cert name] to
+``/etc/ldap/ldap.conf``.The cert can be obtained here_.
 
 .. _this: https://serverfault.com/questions/398684/ubuntu-12-04-ldap-ssl-self-signed-cert-not-accepted/419068#419068?newreg=d93209c894f64b158a82d13727f2a07d
-
+.. _here: https://accounts.cs.sunyit.edu/ucs-root-ca.crt
 
 Configuring Django
 ------------------
 Then you need to make the following changes in `settings.py`:
 
-- Change DATABASES to match the following pattern: (Obviously, these can be configured to whatever you need them to be.)
+- Change DATABASES to match the following pattern: (Obviously, these can be
+    configured to whatever you need them to be.)
 
 ::
 
@@ -91,9 +100,7 @@ Then, we need to run the following commands from the
 terminal (Make sure you've set up and are using venv first):
 
 ::
-
-    python manage.py migrate
-    python manage.py makemigrations csnetinventory
+    python manage.py makemigrations
     python manage.py migrate
 
 You can test your setup using the following:
@@ -104,17 +111,32 @@ You can test your setup using the following:
 
 
 Then we need to create an admin account. Run the following commmand,
-and it will prompt you for a username, email, and password for the admin account.
+and it will prompt you for a username, email, and password for the
+admin account.
 
 ::
 
     python manage.py createsuperuser
 
-You may also find it helpful to access the project python shell:
+Other helpful Django commands
+-----------------------------
+Access the project python shell:
 
 ::
 
     python manage.py shell
+
+Change a user's password
+Note! This only works for accounts using Django's implmentation, i.e., the
+superuser. This server by default uses the CSNet LDAP for user authentication.
+These users' passwords cannot be changed using this method.
+
+::
+
+    python manage.py changepassword
+
+In Linux environments, ``./manage.py [command]`` works as shorthand
+for ``python manage.py [command].``
 
 Running the server
 ------------------

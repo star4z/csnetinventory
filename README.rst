@@ -61,8 +61,9 @@ That should be adequate for setting up the database.
 
 ldap
 ----
-a la (this)[https://serverfault.com/questions/398684/ubuntu-12-04-ldap-ssl-self-signed-cert-not-accepted/419068#419068?newreg=d93209c894f64b158a82d13727f2a07d] stackoverflow page,
-you probably need to copy the cert file to /etc/ssl/certs/ and add TLS_CACERT /etc/ssl/certs/[cert name] to /etc/ldap/ldap.conf
+a la this_ stackoverflow page, you probably need to copy the cert file to /etc/ssl/certs/ and add TLS_CACERT /etc/ssl/certs/[cert name] to /etc/ldap/ldap.conf
+
+.. _this: https://serverfault.com/questions/398684/ubuntu-12-04-ldap-ssl-self-signed-cert-not-accepted/419068#419068?newreg=d93209c894f64b158a82d13727f2a07d
 
 
 Configuring Django

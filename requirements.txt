@@ -7,7 +7,7 @@ certifi==2019.11.28
 chardet==3.0.4
 Django>=3.0.1
 django-url-filter==0.3.14
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 doc8==0.8.0
 docutils==0.16
 enum-compat==0.0.3
